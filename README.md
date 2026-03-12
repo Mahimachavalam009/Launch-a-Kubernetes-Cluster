@@ -73,3 +73,26 @@ eksctl create cluster \
 --nodes-max 3 \
 --version 1.33
 ``` 
+... you'll likely see an error message saying something like 'eksctl' not found.
+
+<img width="941" height="298" alt="image" src="https://github.com/user-attachments/assets/f27353f5-2867-4e07-95de-d2d1c38a749c" />
+
+# What is eksctl?
+eksctl is an official AWS tool for managing Amazon EKS clusters in your terminal. It's much, much easier to use compared to setting up a Kubernetes cluster using the AWS CLI.
+
+2. Install eksctl
+
+ run this command in your ternimal
+   
+```
+   curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+sudo mv -v /tmp/eksctl /usr/local/bin
+```
+<img width="1919" height="326" alt="image" src="https://github.com/user-attachments/assets/0e980583-0476-4ee8-8d34-922c02a7f549" />
+
+# What do these commands do?
+The commands download and install eksctl on your EC2 instance.
+
+The first commands downloads the latest eksctl release from GitHub, then the second command moves it to a directory within your EC2 instance that lets you run eksctl from anywhere in your terminal.
+
+Check that eksctl is installed correctly by running 'eksctl version'. You should see the version number printed in the terminal.
