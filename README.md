@@ -72,4 +72,4 @@ eksctl create cluster \
 --nodes-min 1 \
 --nodes-max 3 \
 --version 1.33
-```
+``` 
