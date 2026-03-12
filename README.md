@@ -96,3 +96,82 @@ The commands download and install eksctl on your EC2 instance.
 The first commands downloads the latest eksctl release from GitHub, then the second command moves it to a directory within your EC2 instance that lets you run eksctl from anywhere in your terminal.
 
 Check that eksctl is installed correctly by running 'eksctl version'. You should see the version number printed in the terminal.
+
+<img width="1919" height="980" alt="image" src="https://github.com/user-attachments/assets/e4275277-ce89-49cb-a6f9-7d0a3e6176f8" />
+
+# Launch an EKS cluster
+# Creating a Kubernetes cluster and using EKS is not AWS Free Tier eligible, so expect to spend $0.10 USD for every hour you leave your EKS cluster running once it's created. Make sure to follow all the deletion instructions at the end of this project to minimise costs for this project.
+
+Now that eksctl is installed, let's try creating our cluster again.
+
+```
+eksctl create cluster \
+--name nextwork-eks-cluster \
+--nodegroup-name nextwork-nodegroup \
+--node-type t3.micro \
+--nodes 3 \
+--nodes-min 1 \
+--nodes-max 3 \
+--version 1.33 \
+--region your-region-code (ap-south-1)
+```
+
+<img width="1892" height="123" alt="image" src="https://github.com/user-attachments/assets/56442066-9822-466f-be8b-22c3fb34d837" />
+
+the error this time is that we dont have permission to create EKS cluster, so we solve it by creating IAM role.
+
+# Create an IAM role for your EC2 instance
+
+1. In a new tab, head to your AWS IAM console.
+2. Select roles on the left , click on create role.
+3. Under Trusted entity type, select AWS service to tell AWS that we're setting up this role for a AWS serice (Amazon EC2).
+4. under usecase select EC2.
+5. select next.
+6. Under Permissions policies, we'll grant our EC2 instance AdministratorAccess.
+
+
+#  What does this permission policy mean?
+AdministratorAccess gives your EC2 instance the permission to access any AWS resource and service in your AWS account.
+
+A super powerful move, which your EC2 instance will need when it deploys and manages your Kubernetes cluster (your instance will be using a lot of different services).
+
+<img width="1917" height="1130" alt="image" src="https://github.com/user-attachments/assets/3285863f-6266-4433-a44c-39cb536cc1a9" />
+
+7. Make sure the AdministratorAccess option is checked, and select Next.
+8. Let's give this role a straightforward name - nextwork-eks-instance-role
+Enter a short description: Grants an EC2 instance AdministratorAccess to my AWS account. Created during NextWork's Kubernetes project.
+
+9. select create role
+
+   <img width="1910" height="1127" alt="image" src="https://github.com/user-attachments/assets/19a1718f-389f-4901-a3ea-fa94896cfa0e" />
+
+# Attach IAM role to EC2 instance
+
+1.  back to the EC2 console.
+2. Select Instances from the left hand sidebar.
+3. Select the checkbox next to your nextwork-eks-instance EC2 instance.
+4. Select the Actions dropdown, and then Security -> Modify IAM role.
+
+   <img width="1919" height="1104" alt="image" src="https://github.com/user-attachments/assets/58a88f17-2513-4003-8e15-052d2b7210ad" />
+
+
+5. Under IAM role, select your new nextwork-eks-instance-role role.
+6. select update IAM.
+
+# Create your EKS cluster again. (after the updated steps)
+
+1. run this command in the EC2 connect tab
+
+```
+eksctl create cluster \
+--name nextwork-eks-cluster \
+--nodegroup-name nextwork-nodegroup \
+--node-type t3.micro \
+--nodes 3 \
+--nodes-min 1 \
+--nodes-max 3 \
+--version 1.33 \
+--region ap-south-1
+```
+
+
