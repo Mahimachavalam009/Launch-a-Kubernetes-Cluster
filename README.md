@@ -1,11 +1,12 @@
 # Launch-a-Kubernetes-Cluster
 
-# Overview <img width="1560" height="1550" alt="image" src="https://github.com/user-attachments/assets/3eae34ce-c70c-4991-babe-1f817fc5af55" />
+# Overview 
+<img width="1560" height="1550" alt="image" src="https://github.com/user-attachments/assets/3eae34ce-c70c-4991-babe-1f817fc5af55" />
 
 1. create a EC2 instance. Once its running and set up connect to it using EC2 Instance Connect.
 
  # Why are we using EC2 Instance Connect?
- To connect to an EC2 instance via SSH
+ To connect to an EC2 instance via SSHz
 
 
 
