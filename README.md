@@ -58,3 +58,18 @@ Setting up Kubernetes from scratch can be quite a time consuming and complex thi
 
 eksctl is a tool specifically for working with EKS in the command line
 
+<img width="1691" height="958" alt="image" src="https://github.com/user-attachments/assets/47f64c34-d8f9-45ad-83fb-812c783de9ff" />
+
+
+1. to create a cluster.
+In your EC2 instance connect window, run the below command.
+```
+eksctl create cluster \
+--name nextwork-eks-cluster \
+--nodegroup-name nextwork-nodegroup \
+--node-type t3.micro \
+--nodes 3 \
+--nodes-min 1 \
+--nodes-max 3 \
+--version 1.33
+```
