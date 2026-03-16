@@ -172,7 +172,6 @@ eksctl create cluster \
 --nodes-max 3 \
 --version 1.33 \
 --region ap-south-1
-
 ```
 
 # Track how AWS creates your EKS cluster
