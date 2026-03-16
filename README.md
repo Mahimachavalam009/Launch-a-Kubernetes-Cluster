@@ -177,5 +177,4 @@ eksctl create cluster \
 
 # Track how AWS creates your EKS cluster
 
-!GitHub Logo
 
