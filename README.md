@@ -173,3 +173,7 @@ eksctl create cluster \
 --version 1.33 \
 --region ap-south-1
 ```
+
+
+
+
