@@ -173,7 +173,10 @@ eksctl create cluster \
 --version 1.33 \
 --region ap-south-1
 ```
+<img width="1919" height="1132" alt="image" src="https://github.com/user-attachments/assets/e1799301-38f7-4a67-82a2-5c2ff6377d52" />
+
 
 # Track how AWS creates your EKS cluster
+<img width="1177" height="653" alt="image" src="https://github.com/user-attachments/assets/00f6857f-52e0-4d9f-a366-91fa7ea1dfae" />
 
 
