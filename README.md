@@ -179,4 +179,34 @@ eksctl create cluster \
 # Track how AWS creates your EKS cluster
 <img width="1177" height="653" alt="image" src="https://github.com/user-attachments/assets/00f6857f-52e0-4d9f-a366-91fa7ea1dfae" />
 
+#  What is CloudFormation?
+CloudFormation is AWS’s service for setting up infrastructure as code. You write a template describing the resources you need (like an instruction manual), and CloudFormation handles creating and configuring those resources.
 
+
+# Why are we in CloudFormation?
+eksctl actually uses CloudFormation under the hood to create your EKS cluster. 
+
+1. in the stack we notice the new stack in progress
+   
+   <img width="1919" height="1146" alt="image" src="https://github.com/user-attachments/assets/39ba6080-8222-494c-82d8-882a9377987b" />
+2. select the stack and track the events
+
+ <img width="1906" height="1101" alt="image" src="https://github.com/user-attachments/assets/bb148dcd-4557-4de3-ac26-e50890eb2363" />
+
+we see that the events are running in the bg
+# The Events tab gives you a timeline of each action CloudFormation is taking to set up your resources
+
+4. now select the resources tab, we see that a lot of resources are being created
+
+   <img width="1918" height="1113" alt="image" src="https://github.com/user-attachments/assets/9d4ed27f-6382-4af2-9241-bf2ab7b96558" />
+
+   # You might notice in your Resources tab all sorts of networking resources - VPC, subnets, route tables, security groups, NAT gateways and internet gateways
+
+   and we may notice there are 2 stacks
+
+   <img width="1919" height="1036" alt="image" src="https://github.com/user-attachments/assets/5a95a805-e0a5-4710-970e-72191c349a82" />
+The second stack is specifically for your node group, which is a group of EC2 instances that will run your containers.
+
+CloudFormation separates the core EKS cluster stack from the node group stack to make it easier to manage and troubleshoot each part independently, especially if one half fails.
+
+<img width="349" height="303" alt="image" src="https://github.com/user-attachments/assets/4963a102-776a-4b99-bed2-d78686cd92da" />
